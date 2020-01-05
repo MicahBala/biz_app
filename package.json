@@ -14,7 +14,7 @@
     "start-dev": "nodemon server.js",
     "start": "node server.js",
     "test": "jest --detectOpenHandles --coverage --forceExit",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "engines": {
     "node": "10.15.0"
@@ -36,6 +36,7 @@
   "devDependencies": {
     "coveralls": "^3.0.9",
     "jest": "^24.9.0",
+    "nyc": "^15.0.0",
     "supertest": "^4.0.2"
   }
 }
