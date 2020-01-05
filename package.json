@@ -4,12 +4,16 @@
   "description": "An app to help find business around",
   "main": "server.js",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "verbose": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "scripts": {
     "start-dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --detectOpenHandles --verbose --coverage"
+    "test": "jest --detectOpenHandles --coverage --forceExit"
   },
   "engines": {
     "node": "10.15.0"
