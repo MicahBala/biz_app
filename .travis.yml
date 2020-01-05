@@ -11,3 +11,5 @@ script:
   - npm run test
 services:
   - mongodb
+after_success:
+  - npm run coveralls
