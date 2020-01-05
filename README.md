@@ -4,7 +4,7 @@
 
 ## Introduction
 
-An application (Backend) to showcase businesses around Kafanchan for free. The app will allow users to post reviews and ratings for each business, so that people can easily find the services they need from any avialable business of their choice.
+An application (Backend) to showcase businesses around Kafanchan for free. The app will allow users to post reviews and ratings for each business, so that people can easily find the services of their choice from the avialable business.
 
 ## Features
 
@@ -15,8 +15,22 @@ Users can do the following:
 - Post a rating for any business
 - Only admin can delete a business
 
+## Test the App
+
+Open postman and send request to the following endpoints on this link https://bizapp2020.herokuapp.com
+
+- GET /api/v1/biz/ (To get all businesses from the database)
+- GET /api/v1/biz/:id (To get a single business)
+- POST /api/v1/biz/ (To post a new business with the fields name, address and phone, either as json of x-www-urlencoded)
+- PUT /api/v1/biz/:id (To edit an existing business)
+- DELETE /api/v1/biz/:id (To delete an existing business)
+
 ## Dependencies
 
 - Node.js
 - Express
 - Mongoose
+
+## Author
+
+Micah Y. Bala
