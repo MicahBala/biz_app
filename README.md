@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/MicahBala/biz_app.svg?branch=master)](https://travis-ci.org/MicahBala/biz_app)
+[![Build Status](https://travis-ci.org/MicahBala/biz_app.svg?branch=master)](https://travis-ci.org/MicahBala/biz_app) [![Coverage Status](https://coveralls.io/repos/github/MicahBala/biz_app/badge.svg?branch=master)](https://coveralls.io/github/MicahBala/biz_app?branch=master)
 
 # BizAPP
 
