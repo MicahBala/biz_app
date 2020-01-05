@@ -14,7 +14,7 @@ describe('Start Server and Connect to MongoDb databse', () => {
 
   describe('Route /api/v1/biz', () => {
     describe('GET all businesses', () => {
-      it('should return all business', async () => {
+      it('should return all businesses', async () => {
         Business.collection.insertMany([
           {
             name: 'Kontract Metals',

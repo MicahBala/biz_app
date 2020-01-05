@@ -9,7 +9,7 @@
   "scripts": {
     "start-dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --detectOpenHandles --watchAll --verbose --coverage"
+    "test": "jest --detectOpenHandles --verbose --coverage"
   },
   "engines": {
     "node": "10.15.0"

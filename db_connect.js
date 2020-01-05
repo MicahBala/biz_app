@@ -10,7 +10,9 @@ try {
   const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    connectTimeoutMS: 60000,
+    socketTimeoutMS: 60000
   };
   mongoose.connect(uri, options);
   console.log(`Successfully connected to ${db} database`);
