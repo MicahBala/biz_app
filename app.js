@@ -6,20 +6,6 @@ const router = require('./routes/index');
 
 const app = express();
 
-app.use(helmet());
-app.use(morgan('tiny'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/', (req, res) => res.send('Welcome'));
-app.use(router);
-
-app.use((req, res, next) => {
-  const error = new Error('Route not found!');
-  error.status = 404;
-  next(error);
-});
-
 // implement cross origin resource sharing CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,6 +18,20 @@ app.use((req, res, next) => {
     'GET, POST, PUT, DELETE, PATCH, OPTIONS'
   );
   next();
+});
+
+app.use(helmet());
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => res.send('Welcome'));
+app.use(router);
+
+app.use((req, res, next) => {
+  const error = new Error('Route not found!');
+  error.status = 404;
+  next(error);
 });
 
 app.use((error, req, res, next) => {
