@@ -1,9 +1,11 @@
-const { Business, validate } = require('../models/business');
-const validateId = require('../services/validateId');
+const { Business, validate } = require("../models/business");
+const validateId = require("../services/validateId");
 
 // Get all biznesses
 const getAllBiz = async (req, res, next) => {
-  const business = await Business.find().sort('bizName');
+  const business = await Business.find()
+    .select("id name address phone")
+    .sort("bizName");
   res.status(200).json(business);
 };
 
@@ -12,9 +14,11 @@ const getSingleBiz = async (req, res, nex) => {
   try {
     validateId(req.params.id);
 
-    const business = await Business.findById({ _id: req.params.id });
+    const business = await Business.findById({ _id: req.params.id }).select(
+      "id name address phone"
+    );
     if (!business)
-      return res.status(404).send('Business with the ID does not exist');
+      return res.status(404).send("Business with the ID does not exist");
     res.status(200).send(business);
   } catch (err) {
     res.send({
@@ -40,9 +44,9 @@ const addNewBiz = async (req, res, next) => {
   // Save the Object to the database
   newBusiness = await newBusiness.save();
 
-  res.status(401).send({
-    status: 'Success',
-    message: 'Business Added Successfully!',
+  res.status(201).send({
+    status: "Success",
+    message: "Business Added Successfully!",
     data: newBusiness
   });
 };
@@ -69,11 +73,11 @@ const updateBiz = async (req, res, next) => {
     );
 
     if (!business)
-      return res.status(404).send('Business with the ID does not exist');
+      return res.status(404).send("Business with the ID does not exist");
 
     res.status(200).send({
-      status: 'Success',
-      message: 'Business Updated Successfully!',
+      status: "Success",
+      message: "Business Updated Successfully!",
       data: business
     });
   } catch (err) {
@@ -90,10 +94,10 @@ const deleteBiz = async (req, res, next) => {
 
     const business = await Business.findByIdAndRemove(req.params.id);
     if (!business)
-      return res.status(404).send('Business with the ID does not exist');
+      return res.status(404).send("Business with the ID does not exist");
     res.send({
-      status: 'Success',
-      message: 'Business Deleted Successfully!'
+      status: "Success",
+      message: "Business Deleted Successfully!"
     });
   } catch (err) {
     res.send({
