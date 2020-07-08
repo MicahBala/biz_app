@@ -103,10 +103,50 @@ router.get("/api/v1/biz/:id", getSingleBiz);
  */
 router.post("/api/v1/biz", addNewBiz);
 
-// Update a business
+/**
+ * @api {put} /api/v1/biz/:id Update a business
+ * @apiName UpdateBusiness
+ * @apiGroup Business
+ *
+ * @apiParam {String} id Business id
+ *
+ * @apiParam {String} name Business Name, must be unique
+ * @apiParam {String} address Business Address
+ * @apiParam {String} phone Business contact phone
+ *
+ * @apiSuccessExample Success Response:
+ * HTTP/1.1 200 OK
+ * {
+ *    "status": "Success",
+ *    "message": "Business updated Successfully!",
+ *    "data": {
+ *       "_id": "5ebab441ba94a73ab4d970a5",
+ *       "name": "Creative Minds",
+ *       "address": "Abuja Nigeria",
+ *       "phone": "08099223344",
+ *       "addedOn": "2020-05-12T14:35:45.564Z",
+ *       "__v": 0
+ *     }
+ * }
+ */
+
 router.put("/api/v1/biz/:id", updateBiz);
 
-// Delete a business
+/**
+ *  * @api {delete} /api/v1/biz/:id Delete a business
+ * @apiName DeleteBusiness
+ * @apiGroup Business
+ *
+ * @apiParam {String} id Business id
+ *
+ * @apiSuccessExample Success Response:
+ * HTTP/1.1 200 OK
+ * {
+ *    "status": "Success",
+ *    "message": "Business deleted Successfully!",
+ * }
+ */
+
 router.delete("/api/v1/biz/:id", deleteBiz);
 
 module.exports = router;
