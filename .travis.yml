@@ -2,10 +2,9 @@ cache:
   directories:
     - node_modules
 install:
-  - 'npm install'
+  - "npm install"
 language: node_js
 node_js:
-  - stable
   - node
 script:
   - npm run test
