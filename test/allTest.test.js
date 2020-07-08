@@ -20,24 +20,24 @@ describe("Start Server and Connect to MongoDb databse", () => {
             name: "Kontract Metals",
             address: "Kaduna",
             phone: "08932456123",
-            addedOn: Date.now()
+            addedOn: Date.now(),
           },
           {
             name: "Fresh Cosmetics",
             address: "Kafanchan",
             phone: "08932456123",
-            addedOn: Date.now()
-          }
+            addedOn: Date.now(),
+          },
         ]);
 
         const result = await request(app).get("/api/v1/biz");
         expect(result.statusCode).toBe(200);
         expect(result.body.length).toBe(2);
         expect(
-          result.body.some(biz => biz.name === "Fresh Cosmetics")
+          result.body.some((biz) => biz.name === "Fresh Cosmetics")
         ).toBeTruthy();
         expect(
-          result.body.some(biz => biz.name === "Kontract Metals")
+          result.body.some((biz) => biz.name === "Kontract Metals")
         ).toBeTruthy();
       });
     });
@@ -48,7 +48,7 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract Metals",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         });
 
         newBiz = await newBiz.save();
@@ -74,27 +74,18 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract Metals",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         };
+        const result = await request(app).post("/api/v1/biz").send(newBusiness);
 
-        try {
-          const result = await request(app)
-            .post("/api/v1/biz")
-            .send(newBusiness);
-        } catch (error) {
-          document(error);
-        }
-
-        expect(result.statusCode).toBe(401);
+        expect(result.statusCode).toBe(201);
         expect(result.body).toHaveProperty("name", result.name);
         expect(result.body).toHaveProperty("address", result.address);
         expect(result.body).toHaveProperty("phone", result.phone);
       });
 
       it("should return 400 if body of request is INVALID", async () => {
-        const result = await request(app)
-          .post("/api/v1/biz")
-          .send({});
+        const result = await request(app).post("/api/v1/biz").send({});
 
         expect(result.statusCode).toBe(400);
       });
@@ -106,7 +97,7 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract Metals",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         });
 
         newBiz = await newBiz.save();
@@ -115,7 +106,7 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         };
 
         const result = await request(app)
@@ -133,7 +124,7 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract Metals",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         });
 
         newBiz = await newBiz.save();
@@ -142,12 +133,10 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         };
 
-        const result = await request(app)
-          .put("/api/v1/biz/1")
-          .send(updatedBiz);
+        const result = await request(app).put("/api/v1/biz/1").send(updatedBiz);
 
         expect(result.body.error).toBe("Invalid ID");
       });
@@ -159,7 +148,7 @@ describe("Start Server and Connect to MongoDb databse", () => {
           name: "Kontract Metals",
           address: "Kaduna",
           phone: "08932456123",
-          addedOn: Date.now()
+          addedOn: Date.now(),
         });
 
         newBiz = await newBiz.save();
