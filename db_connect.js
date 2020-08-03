@@ -1,7 +1,7 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-const db = process.env.NODE_ENV === 'test' ? 'test' : 'business';
+const db = process.env.NODE_ENV === "test" ? "test" : "business";
 
 const db_password = process.env.DB_PASSWORD;
 const uri = `mongodb+srv://micahbala:${db_password}@cluster0-stas6.mongodb.net/${db}?retryWrites=true&w=majority`;
@@ -12,7 +12,8 @@ try {
     useUnifiedTopology: true,
     useFindAndModify: false,
     connectTimeoutMS: 60000,
-    socketTimeoutMS: 60000
+    socketTimeoutMS: 60000,
+    useCreateIndex: true,
   };
   mongoose.connect(uri, options);
   console.log(`Successfully connected to ${db} database`);

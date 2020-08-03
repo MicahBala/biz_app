@@ -206,7 +206,7 @@ const updateBiz = async (req, res, next) => {
 // Delete a business
 
 /**
- *  * @api {delete} /api/v1/biz/:id Delete a business
+ * @api {delete} /api/v1/biz/:id Delete a business
  * @apiName DeleteBusiness
  * @apiGroup Business
  *
